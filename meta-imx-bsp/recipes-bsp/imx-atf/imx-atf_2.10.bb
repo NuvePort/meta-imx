@@ -8,7 +8,7 @@ LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/BSD-3-Clause;m
 PV .= "+git${SRCPV}"
 
 SRC_URI = "${ATF_SRC};branch=${SRCBRANCH}"
-ATF_SRC ?= "git://github.com/nxp-imx/imx-atf.git;protocol=https"
+ATF_SRC ?= "git://github.com/NuvePort/imx-atf.git;protocol=https"
 SRCBRANCH = "lf_v2.10"
 SRCREV = "28affcae957cb8194917b5246276630f9e6343e1"
 
