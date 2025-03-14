@@ -2,7 +2,7 @@
 
 FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
-IMX_FIRMWARE_SRC ?= "git://github.com/NXP/imx-firmware.git;protocol=https"
+IMX_FIRMWARE_SRC ?= "git://github.com/NuvePort/imx-firmware.git;protocol=https"
 SRCBRANCH_imx-firmware = "lf-6.1.22_2.0.0"
 SRC_URI += " \
     git://github.com/murata-wireless/qca-linux-calibration.git;protocol=https;branch=master;name=murata-qca;destsuffix=murata-qca \
@@ -52,11 +52,58 @@ do_install:append () {
     install -m 0644 ${WORKDIR}/imx-firmware/cyw-wifi-bt/1FD_CYW4359/brcmfmac4359-pcie.clm_blob ${D}${nonarch_base_libdir}/firmware/brcm
     install -m 0644 ${WORKDIR}/imx-firmware/cyw-wifi-bt/1FD_CYW4359/brcmfmac4359-pcie.txt ${D}${nonarch_base_libdir}/firmware/brcm
     install -m 0644 ${WORKDIR}/imx-firmware/cyw-wifi-bt/1FD_CYW4359/BCM4349B1_*.hcd ${D}${sysconfdir}/firmware
+    
+        # Install NXP Connectivity
+    install -d ${D}${nonarch_base_libdir}/firmware/nxp
+    install -m 0644 ${WORKDIR}/imx-firmware/nxp/wifi_mod_para.conf    ${D}${nonarch_base_libdir}/firmware/nxp
+    
+    # Install ATWIL Connectivity    
+    install -d ${D}${nonarch_base_libdir}/firmware/mchp
+    install -m 0644 ${WORKDIR}/imx-firmware/mchp/LICENSE.wilc_fw ${D}${nonarch_base_libdir}/firmware/mchp
+    install -m 0644 ${WORKDIR}/imx-firmware/mchp/README.md ${D}${nonarch_base_libdir}/firmware/mchp
+    install -m 0644 ${WORKDIR}/imx-firmware/mchp/wilc1000_wifi_firmware.bin ${D}${nonarch_base_libdir}/firmware/mchp
+    install -m 0644 ${WORKDIR}/imx-firmware/mchp/wilc3000_ble_firmware.bin ${D}${nonarch_base_libdir}/firmware/mchp
+    install -m 0644 ${WORKDIR}/imx-firmware/mchp/wilc3000_ble_firmware_no_rtc.bin ${D}${nonarch_base_libdir}/firmware/mchp
+    install -m 0644 ${WORKDIR}/imx-firmware/mchp/wilc3000_wifi_firmware.bin ${D}${nonarch_base_libdir}/firmware/mchp
+    install -m 0644 ${WORKDIR}/imx-firmware/mchp/wilc3000_wifi_firmware_ua.bin ${D}${nonarch_base_libdir}/firmware/mchp
+
+    # Install NXP Connectivity SD8801 firmware
+    install -m 0644 ${WORKDIR}/imx-firmware/nxp/FwImage_8801_SD/ed_mac_ctrl_V1_8801.conf  ${D}${nonarch_base_libdir}/firmware/nxp
+    install -m 0644 ${WORKDIR}/imx-firmware/nxp/FwImage_8801_SD/sd8801_uapsta.bin         ${D}${nonarch_base_libdir}/firmware/nxp
+
+    # Install NXP Connectivity 8987 firmware
+    install -m 0644 ${WORKDIR}/imx-firmware/nxp/FwImage_8987/ed_mac_ctrl_V3_8987.conf  ${D}${nonarch_base_libdir}/firmware/nxp
+    install -m 0644 ${WORKDIR}/imx-firmware/nxp/FwImage_8987/sdiouart8987_combo_v0.bin ${D}${nonarch_base_libdir}/firmware/nxp
+    install -m 0644 ${WORKDIR}/imx-firmware/nxp/FwImage_8987/txpwrlimit_cfg_8987.conf  ${D}${nonarch_base_libdir}/firmware/nxp
+
+    # Install NXP Connectivity PCIE8997 firmware
+    install -m 0644 ${WORKDIR}/imx-firmware/nxp/FwImage_8997/ed_mac_ctrl_V3_8997.conf  ${D}${nonarch_base_libdir}/firmware/nxp
+    install -m 0644 ${WORKDIR}/imx-firmware/nxp/FwImage_8997/pcieuart8997_combo_v4.bin ${D}${nonarch_base_libdir}/firmware/nxp
+    install -m 0644 ${WORKDIR}/imx-firmware/nxp/FwImage_8997/txpwrlimit_cfg_8997.conf  ${D}${nonarch_base_libdir}/firmware/nxp
+
+    # Install NXP Connectivity SDIO8997 firmware
+    install -m 0644 ${WORKDIR}/imx-firmware/nxp/FwImage_8997_SD/ed_mac_ctrl_V3_8997.conf  ${D}${nonarch_base_libdir}/firmware/nxp
+    install -m 0644 ${WORKDIR}/imx-firmware/nxp/FwImage_8997_SD/sdiouart8997_combo_v4.bin ${D}${nonarch_base_libdir}/firmware/nxp
+    install -m 0644 ${WORKDIR}/imx-firmware/nxp/FwImage_8997_SD/txpwrlimit_cfg_8997.conf  ${D}${nonarch_base_libdir}/firmware/nxp
+
+    # Install NXP Connectivity PCIE9098 firmware
+    install -m 0644 ${WORKDIR}/imx-firmware/nxp/FwImage_9098_PCIE/ed_mac_ctrl_V3_909x.conf  ${D}${nonarch_base_libdir}/firmware/nxp
+    install -m 0644 ${WORKDIR}/imx-firmware/nxp/FwImage_9098_PCIE/pcieuart9098_combo_v1.bin ${D}${nonarch_base_libdir}/firmware/nxp
+    install -m 0644 ${WORKDIR}/imx-firmware/nxp/FwImage_9098_PCIE/txpwrlimit_cfg_9098.conf  ${D}${nonarch_base_libdir}/firmware/nxp
+
+    # Install NXP Connectivity SD9098 firmware
+    install -m 0644 ${WORKDIR}/imx-firmware/nxp/FwImage_9098_SD/sdiouart9098_combo_v1.bin ${D}${nonarch_base_libdir}/firmware/nxp
+
+    # Install NXP Connectivity IW416 firmware
+    install -m 0644 ${WORKDIR}/imx-firmware/nxp/FwImage_IW416_SD/sdiouartiw416_combo_v0.bin ${D}${nonarch_base_libdir}/firmware/nxp
+
+    # Install NXP Connectivity IW612 firmware
+    install -m 0644 ${WORKDIR}/imx-firmware/nxp/FwImage_IW612_SD/* ${D}${nonarch_base_libdir}/firmware/nxp
 }
 
 # Use the latest version of sdma firmware in firmware-imx
 PACKAGES:remove = "${PN}-imx-sdma-license ${PN}-imx-sdma-imx6q ${PN}-imx-sdma-imx7d"
-PACKAGES =+ " ${PN}-bcm4359-pcie"
+PACKAGES =+ " ${PN}-bcm4359-pcie ${PN}-nxp89xx"
 
 FILES:${PN}-bcm4339 += " \
        ${nonarch_base_libdir}/firmware/brcm/brcmfmac4339-sdio.txt \
@@ -89,4 +136,11 @@ FILES:${PN}-bcm4359-pcie = " \
        ${nonarch_base_libdir}/firmware/brcm/brcmfmac4359-pcie.clm_blob \
        ${nonarch_base_libdir}/firmware/brcm/brcmfmac4359-pcie.txt \
        ${sysconfdir}/firmware/BCM4349B1_*.hcd \
+"
+FILES:${PN}-nxp89xx = " \
+       ${nonarch_base_libdir}/firmware/nxp/* \
+"
+
+FILES:${PN}-mchp = " \
+       ${nonarch_base_libdir}/firmware/mchp/* \
 "
